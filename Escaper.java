@@ -14,7 +14,7 @@ public class Escaper {
 	}//createEnviroment
 
 	//before: robot is inside the room
-	//after:  robot is in the cell representing the the doorjamb
+	//after:  robot is on the cell representing the the doorjamb
 	public void moveToEntrance() {
 
 		findWall();
@@ -28,7 +28,7 @@ public class Escaper {
 		}
 	}// moveToEntrance
 
-    //before:the robot is on one of the cells
+        //before:the robot is on one of the cells
 	//after: the robot is still on the same cell, returning a boolean to tell if it's in the doorjamb
 	private boolean atEntrance(){
 
@@ -60,17 +60,18 @@ public class Escaper {
 	}
 
 	//before: the robot is somewhere in the room
-	//after: the robot has turned right and returns a boolean to tell if fron is clear
-	private boolean checkDirectionRight(){  //Return true if there is no wall to the left
+	//after: the robot has turned right and returns a boolean to tell if front is clear
+	private boolean checkDirectionRight(){  
 
 		robot.turnLeft();
 		robot.turnLeft();
 		robot.turnLeft();
 		return robot.frontIsClear();
 	}
-
+	
 	//before: the robot is moving along the wall
-	//after: the robot has found the doorjamb
+	//        this method is more specifically checking for corners
+	//after: the robot has turned left and moved forward if possible, otherwise it has turned left again
 	private void scoutWall(){
 		robot.turnLeft();
 		if(robot.frontIsClear())
